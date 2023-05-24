@@ -1,0 +1,199 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+/* The switch - the box around the slider */
+.switch {
+    display: block;
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* size of sliding icon -- sun and moon */
+    --size-of-icon: 1.4em;
+    /* it is like a inline-padding of switch */
+    --slider-offset: 0.3em;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f5f4f4;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon,1.4em);
+    width: var(--size-of-icon,1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset,0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
+    ;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #303136;
+  }
+  
+  input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+    background: #313630;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+  }
+
+  /* Dark mode */
+  body.dark-mode {
+    background-color: #303136;
+    color: #f5f4f4;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .cards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  } 
+  
+  .card {
+    z-index: 1;
+    position: absolute;
+    width: 254px;
+    height: 190px;
+    border-radius: 10px;
+    transition: all .5s ease-out;
+    overflow: hidden;
+    transform: translateX(0px) translateY(0px) perspective(905px) rotateX(0deg) rotateY(0deg) rotateZ(-8deg);
+  }
+  
+  .card.one {
+    top: -120px;
+    left: -150px;
+    background: linear-gradient(180deg, #FF0055 0%, #000066 100%);
+  }
+  
+  .card.two {
+    top: -95px;
+    left: -125px;
+    background: linear-gradient(180deg, #fa00ff 0%, #01f998 99%);
+  }
+  
+  .card.three {
+    top: -70px;
+    left: -100px;
+    background: linear-gradient(180deg, #c0f901 0%, #fa00ff 100%);
+  }
+  
+  .card:hover {
+    z-index: 4;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) !important;
+    transition: all .5s ease-out;
+  }
+  
+  .cardDetails {
+    width: 55%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: rgba(0,0,0,0.8);
+    transition: .5s;
+    transform-origin: left;
+    transform: perspective(2000px) rotateY(-90deg);
+  }
+  
+  .card:hover .cardDetails {
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  
+  .cardDetailsHaeder {
+    font-weight: 600;
+    color: #edb899;
+  }
+  
+  .cardDetailsButton {
+    padding: 3px 6px;
+    border-radius: 25px;
+    background-color: #edb899;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  /* === removing default button style ===*/
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgb(0, 0, 0);
+  --animation-color: #ffa600;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}

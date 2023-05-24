@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Elérhetőség.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+    <title>Elérhetőség - BOMP Kft.</title>
+</head>
+<body class="dark-mode">    
+    <label class="switch">
+        <input type="checkbox" id="modeSwitch" checked>
+        <span class="slider"></span>
+    </label>
+    <script>
+        const modeSwitch = document.getElementById('modeSwitch');
+
+        modeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+    <div class="card">
+        <p><span>Telefon: <br>0630-213-4256</span></p>
+        <p><span>Email: <br>otletelok.bomp.hu</span></p>
+        <p><span>Twitter: <br>@BOMP</span></p>
+        <p><span> Instagram: <br>BOMP</span></p>
+        <p><span>Helyileg itt vagyunk: <br>Szolnok 5000. <br>Hársfa utca 22.</span></p>
+    </div>
+    <button id="backButton" onclick="window.location.href='Visszatoltokep.html'">
+        <span class="button-text">vissza</span>
+        <span class="hover-text" aria-hidden="true">&nbsp;vissza&nbsp;</span>
+      </button>
+</body>
+</html>
